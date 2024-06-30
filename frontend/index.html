@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalvium Compiler</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="heading">Kalvium Compiler</h1>
+        <div class="split-container">
+            <div class="input-section">
+                <label for="language" class="label">Select a language:</label>
+                <select id="language"></select>
+                <label for="code" class="label">Enter your code:</label>
+                <textarea id="code" placeholder="Write your code here..."></textarea>
+                <label for="stdin" class="label">Enter your input (stdin):</label>
+                <textarea id="stdin" placeholder="Write your input here..."></textarea>
+                <button id="runButton">Run Code</button>
+            </div>
+            <div class="result-container">
+                <div class="output-label">OUTPUT</div>
+                <div id="result" class="result">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

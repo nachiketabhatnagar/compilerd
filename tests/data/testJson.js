@@ -142,7 +142,7 @@ const testCases = [
         },
     },
     {
-        name: 'java : print stdin',
+        name: 'java : print hello world',
         reqObject: {
             language: 'java',
             script:
@@ -297,6 +297,106 @@ const testCases = [
             status: 200,
             error: 0,
         },
+    },
+    // Adding Go tests
+    {
+        name: 'go : hello world',
+        reqObject: {
+            language: 'go',
+            script: 'package main; import "fmt"; func main() { fmt.Println("hello world") }'
+        },
+        expectedResponse: {
+            val: 'hello world\n',
+            status: 200,
+            error: 0
+        }
+    },
+    {
+        name: 'go : print stdin',
+        reqObject: {
+            language: 'go',
+            script:
+                'package main\n' +
+                'import (\n' +
+                '    "bufio"\n' +
+                '    "fmt"\n' +
+                '    "os"\n' +
+                ')\n' +
+                'func main() {\n' +
+                '    scanner := bufio.NewScanner(os.Stdin)\n' +
+                '    for scanner.Scan() {\n' +
+                '        fmt.Println(scanner.Text())\n' +
+                '    }\n' +
+                '}',
+            stdin: '1\n2\n3'
+        },
+        expectedResponse: {
+            val: '1\n2\n3\n',
+            status: 200,
+            error: 0
+        }
+    },
+    // Adding Lua tests
+    {
+        name: 'lua : hello world',
+        reqObject: {
+            language: 'lua',
+            script: 'print("hello world")'
+        },
+        expectedResponse: {
+            val: 'hello world\n',
+            status: 200,
+            error: 0
+        }
+    },
+    {
+        name: 'lua : print stdin',
+        reqObject: {
+            language: 'lua',
+            script:
+                'for line in io.lines() do\n' +
+                '    print(line)\n' +
+                'end',
+            stdin: '1\n2\n3'
+        },
+        expectedResponse: {
+            val: '1\n2\n3\n',
+            status: 200,
+            error: 0
+        }
+    },
+    // Adding Rust tests
+    {
+        name: 'rust : hello world',
+        reqObject: {
+            language: 'rust',
+            script: 'fn main() { println!("hello world"); }'
+        },
+        expectedResponse: {
+            val: 'hello world\n',
+            status: 200,
+            error: 0
+        }
+    },
+    {
+        name: 'rust : print stdin',
+        reqObject: {
+            language: 'rust',
+            script:
+                'use std::io::{self, BufRead};\n' +
+                'fn main() {\n' +
+                '    let stdin = io::stdin();\n' +
+                '    for line in stdin.lock().lines() {\n' +
+                '        println!("{}", line.unwrap());\n' +
+                '    }\n' +
+                '}',
+            stdin: '1\n2\n3'
+        },
+        expectedResponse: {
+            val: '1\n2\n3\n',
+            status: 200,
+            error: 0
+        }
     },
 ]
 
